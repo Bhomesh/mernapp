@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { findRenderedDOMComponentWithTag } = require("react-dom/test-utils");
 
 const mongoURI =
-  "mongodb+srv://bhomeshrazdanwoZqrk:123@cluster0.tqloona.mongodb.net/mernnn?retryWrites=true&w=majority";
+  "mongodb+srv://bhomeshrazdanwork:69@cluster0.tqloona.mongodb.net/mernnn";
 
 const connectToMongoDB = async () => {
   try {
