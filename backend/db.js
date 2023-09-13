@@ -25,4 +25,3 @@ const mongoDB = async () => {
 };
 
 module.exports = mongoDB;
-// fetched_data.find({}).toArray(function(err, data)
