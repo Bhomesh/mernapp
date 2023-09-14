@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const { findRenderedDOMComponentWithTag } = require("react-dom/test-utils");
 
+
+mongoose.set('strictQuery', true);
+
 const mongoURI =
   "mongodb+srv://bhomeshrazdanwork:69@cluster0.tqloona.mongodb.net/mernnn";
 
@@ -12,7 +15,7 @@ const connectToMongoDB = async () => {
     console.log("Connected to MongoDB");
 
     // Fetch data from the "food" collection
-    const foodCollection = mongoose.connection.db.collection("food");
+    const foodCollection = mongoose.connection.db.collection("food category");
     const data = await foodCollection.find({}).toArray();
     console.log("Fetched data:", data);
   } catch (error) {
