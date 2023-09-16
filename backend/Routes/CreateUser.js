@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const User = require('../model/User')
 
 router.post("/createuser", async (req, res) => {
   try {
     await User.create({
       name: "Bhomesh Razdan",
-      password: "123",
-      email: "unknown@gmail.com",
       location: "Unknown",
+      email: "unknown@gmail.com",
+      password: "123",
     });
     res.json({ success: true });
   } catch (error) {

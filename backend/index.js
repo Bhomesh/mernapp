@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const port = 3003
+const port = 5000
 const mongoDB = require("./db")
 const connectToMongoDB = require("./db1")
 
@@ -12,7 +12,7 @@ app.get('/', (req,res) => {
 })
 app.use(express.json())
 
-app.use('/api/',require("./routes/CreateUser"));    
+app.use('/api/',require("./Routes/CreateUser"));    
 
 app.listen(port, () => {
     console.log(`connected at ${port}`)
