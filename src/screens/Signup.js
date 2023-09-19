@@ -2,90 +2,91 @@ import React, { useState } from "react";
 import cn from "classnames"; // Assuming you have 'classnames' installed locally
 import ReactDOM from "react-dom";
 import "./css/Signup.css";
+import { Link } from "react-router-dom";
+
+function SignInUpForm() {
+  const [isSignInActive, setIsSignInActive] = useState(false);
+
+  const handleSignUpClick = () => {
+    setIsSignInActive(false);
+    console.log('button clicked 1');
+  };
+
+  const handleSignInClick = () => {
+    setIsSignInActive(true);
+    console.log('button clicked 2')
+  };
+}
 
 export default function Signup() {
   const [switched, setSwitched] = useState(false);
 
   return (
-    <div className="local-container">
-      <div className={cn("test", { "s--switched": switched })}>
-        <div className="inner">
-          <div className="forms">
-            <div className="form">
-              <div className="form-content">
-                <FakeForm
-                  heading="Welcome back"
-                  fields={["email", "password"]}
-                  submitLabel="Sign in"
-                />
-              </div>
+    <div>
+      <div className="container" id="container">
+        <div className="form-container sign-up-container">
+          <form action="#">
+            <h1>Create Account</h1>
+            <div className="social-container">
+              <Link to="#" className="social">
+                <i className="fab fa-facebook-f"></i>
+              </Link>
+              <Link to="#" className="social">
+                <i className="fab fa-google-plus-g"></i>
+              </Link>
+              <Link to="#" className="social">
+                <i className="fab fa-linkedin-in"></i>
+              </Link>
             </div>
-            <div className="form">
-              <div className="form-content">
-                <FakeForm
-                  heading="Time to feel like home"
-                  fields={["name", "email", "password"]}
-                  submitLabel="Sign up"
-                />
-              </div>
+            <span>or use your email for registration</span>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Sign Up</button>
+          </form>
+        </div>
+        <div className="form-container sign-in-container">
+          <form action="#">
+            <h1>Sign in</h1>
+            <div className="social-container">
+              <Link to="#" className="social">
+                <i className="fab fa-facebook-f"></i>
+              </Link>
+              <Link to="#" className="social">
+                <i className="fab fa-google-plus-g"></i>
+              </Link>
+              <Link to="#" className="social">
+                <i className="fab fa-linkedin-in"></i>
+              </Link>
             </div>
-          </div>
-          <div className="switcher">
-            <div className="switcher-inner">
-              <div className="switcher-content">
-                <div className="switcher-text">
-                  <div>
-                    <h3>New here?</h3>
-                    <p>
-                      Sign up and discover a great number of new opportunities!
-                    </p>
-                  </div>
-                  <div>
-                    <h3>One of us?</h3>
-                    <p>
-                      If you already have an account, just sign in. We've missed
-                      you!
-                    </p>
-                  </div>
-                </div>
-                <button
-                  className="switcher-btn"
-                  onClick={() => setSwitched(!switched)}
-                >
-                  <span className="animated-border" />
-                  <span className="switcher-btn-inner">
-                    <span>Sign Up</span>
-                    <span>Sign In</span>
-                  </span>
-                </button>
-              </div>
+            <span>or use your account</span>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <Link to="#">Forgot your password?</Link>
+            <button>Sign In</button>
+          </form>
+        </div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button className="ghost" npm onClick={'handleSignUpClick'}>
+                Sign In
+              </button>
+            </div>
+            <div className="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button className="ghost" onClick={'handleSignUpClick'}>
+                Sign Up
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-interface FakeFormProps {
-  heading: string;
-  fields: string[];
-  submitLabel: string;
-}
-
-function FakeForm({ heading, fields, submitLabel }: FakeFormProps) {
-  return (
-    <form className="form" onSubmit={(e) => e.preventDefault()}>
-      <div className="form__heading">{heading}</div>
-      {fields.map((field) => (
-        <label className="form__field" key={field}>
-          <span className="form__field-label">{field}</span>
-          <input className="form__field-input" type={field} />
-        </label>
-      ))}
-      <button type="submit" className="form__submit">
-        {submitLabel}
-      </button>
-    </form>
   );
 }
