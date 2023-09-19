@@ -33,13 +33,8 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Pricing
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link disabled" aria-disabled="true">
-                  Disabled
+                <Link className="nav-link" to="/createuser" >
+                  Signup
                 </Link>
               </li>
             </ul>
