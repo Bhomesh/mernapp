@@ -1,15 +1,18 @@
-import React, { useState } from "https://esm.sh/react@18.2.0";
-import cn from "https://cdn.skypack.dev/classnames@2.3.2";
-import ReactDOM from "https://esm.sh/react-dom@18.2.0";
+import React, { useState } from "react";
+import cn from "classnames"; // Assuming you have 'classnames' installed locally
+import ReactDOM from "react-dom";
+import "./css/Signup.css";
 
 export default function Signup() {
+  const [switched, setSwitched] = useState(false);
+
   return (
     <div className="local-container">
-      <div className={cn("demo", { "s--switched": switched })}>
-        <div className="demo__inner">
-          <div className="demo__forms">
-            <div className="demo__form">
-              <div className="demo__form-content">
+      <div className={cn("test", { "s--switched": switched })}>
+        <div className="inner">
+          <div className="forms">
+            <div className="form">
+              <div className="form-content">
                 <FakeForm
                   heading="Welcome back"
                   fields={["email", "password"]}
@@ -17,8 +20,8 @@ export default function Signup() {
                 />
               </div>
             </div>
-            <div className="demo__form">
-              <div className="demo__form-content">
+            <div className="form">
+              <div className="form-content">
                 <FakeForm
                   heading="Time to feel like home"
                   fields={["name", "email", "password"]}
@@ -27,30 +30,30 @@ export default function Signup() {
               </div>
             </div>
           </div>
-          <div className="demo__switcher">
-            <div className="demo__switcher-inner">
-              <div className="demo__switcher-content">
-                <div className="demo__switcher-text">
+          <div className="switcher">
+            <div className="switcher-inner">
+              <div className="switcher-content">
+                <div className="switcher-text">
                   <div>
                     <h3>New here?</h3>
                     <p>
-                      Sign up and discover great amount of new opportunities!
+                      Sign up and discover a great number of new opportunities!
                     </p>
                   </div>
                   <div>
                     <h3>One of us?</h3>
                     <p>
-                      If you already has an account, just sign in. We&apos;ve
-                      missed you!
+                      If you already have an account, just sign in. We've missed
+                      you!
                     </p>
                   </div>
                 </div>
                 <button
-                  className="demo__switcher-btn"
+                  className="switcher-btn"
                   onClick={() => setSwitched(!switched)}
                 >
                   <span className="animated-border" />
-                  <span className="demo__switcher-btn-inner">
+                  <span className="switcher-btn-inner">
                     <span>Sign Up</span>
                     <span>Sign In</span>
                   </span>
@@ -64,11 +67,11 @@ export default function Signup() {
   );
 }
 
-// interface FakeFormProps {
-//   heading: string;
-//   fields: string[];
-//   submitLabel: string;
-// }
+interface FakeFormProps {
+  heading: string;
+  fields: string[];
+  submitLabel: string;
+}
 
 function FakeForm({ heading, fields, submitLabel }: FakeFormProps) {
   return (
