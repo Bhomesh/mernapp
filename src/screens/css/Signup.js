@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 import cn from "classnames"; // Assuming you have 'classnames' installed locally
-import ReactDOM from "react-dom";
-import "./css/Signup.css";
 import { Link } from "react-router-dom";
+import "./css/Signup.css";
 
-function SignInUpForm() {
+export default function Signup() {
   const [isSignInActive, setIsSignInActive] = useState(false);
 
   const handleSignUpClick = () => {
     setIsSignInActive(false);
-    console.log('button clicked 1');
+    console.log("Sign Up button clicked");
   };
 
   const handleSignInClick = () => {
     setIsSignInActive(true);
-    console.log('button clicked 2')
+    console.log("Sign In button clicked");
   };
-}
-
-export default function Signup() {
-  const [switched, setSwitched] = useState(false);
 
   return (
     <div>
-      <div className="container" id="container">
+      <div
+        className={cn("container", { "right-panel-active": isSignInActive })}
+
+        id="container"
+      >
         <div className="form-container sign-up-container">
           <form action="#">
             <h1>Create Account</h1>
@@ -42,7 +41,7 @@ export default function Signup() {
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <button onClick={handleSignUpClick}>Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
@@ -73,14 +72,14 @@ export default function Signup() {
               <p>
                 To keep connected with us please login with your personal info
               </p>
-              <button className="ghost" npm onClick={'handleSignUpClick'}>
+              <button className="ghost" onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button className="ghost" onClick={'handleSignUpClick'}>
+              <p>Enter your personal details and start the journey with us</p>
+              <button className="ghost" onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>
@@ -89,4 +88,4 @@ export default function Signup() {
       </div>
     </div>
   );
-}
+  }
