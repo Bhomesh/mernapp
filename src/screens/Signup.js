@@ -12,6 +12,16 @@ export default function Signup() {
       <div>
         <form>
           <div className="form-group">
+            <label for="exampleInputEmail1">Full Name</label>
+            <input
+              type="Text"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter Full Name"
+            />
+          </div>
+          <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -19,7 +29,6 @@ export default function Signup() {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
-              
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
@@ -41,7 +50,7 @@ export default function Signup() {
               id="exampleCheck1"
             />
             <label className="form-check-label" for="exampleCheck1">
-              Check me out
+              Remember me
             </label>
           </div>
           <button type="submit" className="btn btn-primary">

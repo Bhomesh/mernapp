@@ -25,3 +25,7 @@ const mongoDB = async () => {
 };
 
 module.exports = mongoDB;
+
+
+
+// mongoexport --uri "mongodb+srv://bhomeshrazdanwork:69@cluster0.tqloona.mongodb.net/mernnn" --collection food --type=json --out output.json

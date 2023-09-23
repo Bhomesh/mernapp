@@ -7,8 +7,8 @@ router.post(
   "/createuser",
   [
     body("email","invalid email").isEmail(),
-    body("name","invalid name").isLength({ min: 2 }),
-    body("password","incorrect password").isLength({ min: 8 }),
+    body("name","invalid name").isLength({ min: 2 , max: 25 }),
+    body("password","incorrect password").isLength({ min: 8 , max: 50}),
   ],
   async (req, res) => {
     const errors = validationResult(req);
