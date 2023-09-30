@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-// import router from "../../backend/Routes/CreateUser";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [credentials, setcreadentials] = useState({
     name: "",
     email: "",
     password: "",
-    location: ""
+    location: "",
   });
 
   const handleSubmit = async (e) => {
@@ -26,11 +25,11 @@ export default function Signup() {
         location: credentials.location,
       }),
     });
-    const json = await response.json()
+    const json = await response.json();
     console.log(json);
 
-    if(!json.console){
-      alert("Enter Valid Credentials")
+    if (!json.success) {
+      alert("Enter Valid Credentials");
     }
   };
 
@@ -49,11 +48,11 @@ export default function Signup() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Full Name</label>
+            <label htmlFor="exampleInputName1">Full Name</label>
             <input
               type="Text"
               className="form-control"
-              id="exampleInputEmail1"
+              id="exampleInputName1"
               aria-describedby="emailHelp"
               placeholder="Enter Full Name"
               name="name"
@@ -94,7 +93,7 @@ export default function Signup() {
             <input
               type="location"
               className="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputlocation1"
               placeholder="location"
               name="location"
               value={credentials.location}

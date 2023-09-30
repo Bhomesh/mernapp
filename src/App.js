@@ -10,14 +10,14 @@ import Signup from "./screens/Signup";
 function App() {
   return (
     <Router>
-      <dev>
+      <div>
           <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/login" element={<Login/>} />
             <Route exact path="/createuser" element={<Signup/>} />
           
           </Routes>
-      </dev>
+      </div>
     </Router>
   );
 }
