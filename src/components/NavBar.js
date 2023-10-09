@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
+  const handleLogout = () =>{
+    localStorage.removeItem("authToken");
+    navigate("/login");
+  }
   return (
-    <div>  
+    <div>
       <nav className="navbar navbar-expand-lg bg-success ">
         <div className="container-fluid">
           <Link className="navbar-brand fs-1" to="/">
@@ -21,23 +26,49 @@ export default function NavBar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link
+                  className="nav-link active fs-5"
+                  aria-current="page"
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
+              {localStorage.getItem("authToken") ? (
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active fs-5"
+                    aria-current="page"
+                    to="/"
+                  >
+                    My Orders
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
+            </ul>
+            {!localStorage.getItem("authToken") ? (
+              <div className="d-flex">
+                <Link className="btn bg-white text-success mx-1" to="/login">
                   Login
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/createuser" >
+                <Link
+                  className="btn bg-white text-success mx-1"
+                  to="/createuser"
+                >
                   Signup
                 </Link>
-              </li>
-            </ul>
+              </div>
+            ) : (
+              <div>
+
+              <div className="btn bg-white text-success mx-2 ">My Cart</div>
+              <div className="btn bg-white text-danger mx-2 " onClick={handleLogout}>logout</div>
+              </div>
+            )}
           </div>
         </div>
       </nav>

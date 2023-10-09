@@ -11,8 +11,8 @@ app.use((req, res, next) => {
   next();
 });
 // mongoDB();
-// connectToMongoDB();
-localDB();
+connectToMongoDB();
+// localDB();
 
 app.get("/", (req, res) => {
   res.send("hello  world");
@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 
 app.use("/api/", require("./Routes/CreateUser"));
+app.use("/api/", require("./Routes/DisplayData"));
 
 // app.use("/api/", require("./Routes/SignUp"));
 

@@ -15,12 +15,13 @@ const connectToMongoDB = async () => {
     console.log("Connected to MongoDB");
 
     // Fetch data from the "food" collection
-    const foodCollection = mongoose.connection.db.collection("food");
+    const foodCollection = mongoose.connection.db.collection("users");
     const data = await foodCollection.find({}).toArray();
     console.log("Fetched data:", data);
   } catch (error) {
     console.error("Error:", error);
   }
+  global.food_items = data;
 };
 
 module.exports = connectToMongoDB;
